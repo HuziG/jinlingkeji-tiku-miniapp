@@ -1,0 +1,16 @@
+<!-- pages/home/home.wxml -->
+<view class="container">
+  <view class="title">试卷列表</view>
+  <view class="list-block">
+    <view class="item">
+      <view class="name">name</view>
+      <view class="describe">describe</view>
+      <view class="time">time</view>
+    </view>
+    <view class="item">
+      <view class="name">name</view>
+      <view class="describe">describe</view>
+      <view class="time">time</view>
+    </view>
+  </view>
+</view>
