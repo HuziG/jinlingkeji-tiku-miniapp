@@ -1,5 +1,6 @@
 {
-  "pages": ["pages/index/index","pages/home/home"],
+  "pages": ["pages/index/index","pages/home/home","pages/doing/doing",
+    "pages/conclusion/conclusion"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

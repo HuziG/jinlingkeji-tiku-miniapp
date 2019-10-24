@@ -1,0 +1,33 @@
+/* pages/doing/doing.wxss */
+.header {
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  padding: 0px 15px;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  background-color: #fafafa;
+}
+
+.container {
+  margin-top: 43px;
+  padding: 0px 15px 53px 15px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  padding: 0px 15px;
+  height: 50px;
+  box-sizing: border-box;
+  background-color: #fafafa;
+}

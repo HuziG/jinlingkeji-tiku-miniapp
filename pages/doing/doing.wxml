@@ -1,0 +1,10 @@
+<!-- pages/doing/doing.wxml -->
+<view class="header">
+  <header-nav nextDisabled="{{true}}" analyDisabled="{{true}}" nextDisabled="{{true}}" />
+</view>
+<view class="container">
+  <view>container</view>
+</view>
+<view class="footer">
+  <bottom-nav curIndex="{{1}}" />
+</view>

@@ -1,0 +1,7 @@
+/* components/bottomNav/index.wxss */
+.container {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

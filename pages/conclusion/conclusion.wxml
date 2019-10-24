@@ -1,0 +1,24 @@
+<!-- pages/conclusion/conclusion.wxml -->
+<view class="container">
+  <view class="main-block">
+    <view class="item">
+      <text class="left small-title">总分</text>
+      <text class="right row-des">100</text>
+    </view>
+    <view class="item">
+      <view class="top big-title">本次得分</view>
+      <view class="bottom column-des">80</view>
+    </view>
+    <view class="item">
+      <view class="top big-title">正确率</view>
+      <view class="bottom column-des">80%</view>
+    </view>
+  </view>
+</view>
+<view class="footer-wrapper">
+  <view class="footer-button">
+    <button class="btn" type="primary" size="mini" disabled="{{disabled}}" bindtap="backToHomeHandle">
+      返回首页
+    </button>
+  </view>
+</view>

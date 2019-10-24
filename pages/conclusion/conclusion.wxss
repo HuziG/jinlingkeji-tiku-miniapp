@@ -1,0 +1,43 @@
+/* pages/conclusion/conclusion.wxss */
+.container {
+  padding: 0 16px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.main-block {
+  margin-top: 30px;
+}
+
+.item {
+  padding: 20px 0;
+  border-bottom: 1px dashed #666;
+}
+
+.small-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.big-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.row-des {
+  padding-left: 10px;
+}
+
+.column-des {
+  padding-top: 10px;
+}
+
+.footer-wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 20px 10px;
+  text-align: center;
+  box-sizing: border-box;
+}

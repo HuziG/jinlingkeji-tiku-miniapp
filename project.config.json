@@ -49,12 +49,26 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "pages/home/home",
 					"pathName": "pages/home/home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/doing/doing",
+					"pathName": "pages/doing/doing",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/conclusion/conclusion",
+					"pathName": "pages/conclusion/conclusion",
 					"scene": null
 				}
 			]
