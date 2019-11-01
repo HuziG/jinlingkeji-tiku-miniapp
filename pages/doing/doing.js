@@ -1,66 +1,96 @@
 // pages/doing/doing.js
+import * as DoingModels from "../../models/doing";
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    prevDisabled: true,
+    analyDisabled: false,
+    nextDisabled: false,
+    index: 0,
+    data: null,
+    scores: 0,
+    selectInfo: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    let data = DoingModels.modeGetItem(
+      Number(options.mode),
+      JSON.parse(wx.getStorageSync("doing_data"))
+    );
+    this.setData({
+      data
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  nextHandle() {
+    this.data.scoreLock = "REFRESH";
 
+    let { index, data, prevDisabled, nextDisabled } = this.data;
+
+    index = ++index;
+
+    if (index === data.length - 1) {
+      nextDisabled = true;
+    }
+
+    if (index !== 0) {
+      prevDisabled = false;
+    }
+
+    this.setData({
+      index,
+      prevDisabled,
+      nextDisabled
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  prevHandle() {
+    this.data.scoreLock = "REFRESH";
 
+    let { index, data, prevDisabled, nextDisabled } = this.data;
+
+    index = --index;
+
+    if (index !== data.length - 1) {
+      nextDisabled = false;
+    }
+
+    if (index === 0) {
+      prevDisabled = true;
+    }
+
+    this.setData({
+      index,
+      prevDisabled,
+      nextDisabled
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+  scoreHandle(e) {
+    let { scores, index, data, selectInfo } = this.data;
 
-  },
+    if (e.detail.type === "ADD") {
+      if (!this.data.scoreLock || this.data.scoreLock === "REFRESH") {
+        scores += data[index].scores;
+      }
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+      this.data.scoreLock = true;
+    }
 
-  },
+    if (e.detail.type === "REDUCE") {
+      if (this.data.scoreLock || this.data.scoreLock === "REFRESH") {
+        scores -= data[index].scores;
+      }
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+      this.data.scoreLock = false;
+    }
 
-  },
+    selectInfo[index] = e.detail.index;
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+    this.data.scores = scores;
 
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    this.setData({
+      selectInfo
+    });
   }
-})
+});

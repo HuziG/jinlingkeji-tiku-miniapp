@@ -1,5 +1,0 @@
-/* components/topNav/index.wxss */
-.container {
-  text-align: center;
-  font-weight: 700;
-}

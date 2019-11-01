@@ -1,0 +1,10 @@
+<!-- components/doing/content/index.wxml -->
+<view class="type-choice">
+  <view class="con">{{data.content}}</view>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <radio class="radio" wx:for-items="{{data.options}}" wx:key="*index" value="{{index}}" checked="{{item.checked}}">
+      <view>{{wxs.sqText(index)}}：{{item}}</view>
+    </radio>
+  </radio-group>
+</view>
+<wxs module="wxs" src="../../../utils/util.wxs"></wxs>

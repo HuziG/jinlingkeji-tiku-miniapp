@@ -1,6 +1,0 @@
-<!-- components/bottomNav/index.wxml -->
-<view class="container">
-  <button type="default" size="mini" disabled="{{prevDisabled}}" bindtap="default">上一题</button>
-  <button type="default" size="mini" disabled="{{analyDisabled}}" bindtap="default">查看解析</button>
-  <button type="default" size="mini" disabled="{{nextDisabled}}" bindtap="default">下一题</button>
-</view>

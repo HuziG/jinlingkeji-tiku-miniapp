@@ -1,10 +1,12 @@
 <!-- pages/doing/doing.wxml -->
 <view class="header">
-  <header-nav nextDisabled="{{true}}" analyDisabled="{{true}}" nextDisabled="{{true}}" />
+  <header-nav-cmp curIndex="{{index}}" total="{{data.length}}" />
 </view>
 <view class="container">
-  <view>container</view>
+  <view>
+    <con-cmp data="{{data[index]}}" selectInfo="{{selectInfo[index]}}" bind:scoreHandle="scoreHandle" />
+  </view>
 </view>
 <view class="footer">
-  <bottom-nav curIndex="{{1}}" />
+  <bottom-nav-cmp curIndex="{{1}}" prevDisabled="{{prevDisabled}}" analyDisabled="{{analyDisabled}}" nextDisabled="{{nextDisabled}}" bind:nextHandle="nextHandle" bind:checkHandle="checkHandle" bind:prevHandle="prevHandle" />
 </view>

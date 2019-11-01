@@ -1,0 +1,5 @@
+<!-- components/topNav/index.wxml -->
+<view class="container">
+  <text>{{curIndex+1}}/{{total}}</text>
+  <button type="primary" size="mini" id="put-paper">交卷</button>
+</view>

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "bottom-nav": "/components/bottomNav/index",
-    "header-nav": "/components/headerNav/index"
+    "bottom-nav-cmp": "/components/doing/bottomNav/index",
+    "con-cmp": "/components/doing/content/index",
+    "header-nav-cmp": "/components/doing/headerNav/index"
   }
 }

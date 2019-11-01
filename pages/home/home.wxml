@@ -1,13 +1,29 @@
 <!-- pages/home/home.wxml -->
 <view class="container">
   <view class="title">试卷列表</view>
-  <view class="list-block">
-    <picker mode="selector" bindchange="pickerChangeHandle" range-key="name" range="{{picker.value}}">
-      <view class="item" data-id="001" bind:tap="detailHandle">
-        <view class="name">name</view>
-        <view class="describe">describe</view>
-        <view class="time">time</view>
-      </view>
-    </picker>
+  <view wx:if="{{list.loading === 'ING'}}">
+    <loading-cmp />
+  </view>
+  <view wx:if="{{list.loading === 'ERR'}}">
+    <error-cmp />
+  </view>
+  <view wx:if="{{list.loading === 'SUCC'}}">
+    <block wx:for="{{list.con}}" wx:key="*this">
+      <picker mode="selector" bindchange="pickerChangeHandle" range-key="name" range="{{picker.value}}">
+        <template is="listItem" data="{{...item, index}}" />
+      </picker>
+    </block>
   </view>
 </view>
+<!-- template -->
+<template name="listItem">
+  <view class="list-block">
+    <view class="item" data-index="{{index}}" bind:tap="detailHandle">
+      <view class="classname">{{classname}}</view>
+      <view class="name">{{name}}</view>
+      <view class="time">创建时间: {{utils.formatTime(key)}}</view>
+    </view>
+  </view>
+</template>
+<!-- wxs -->
+<wxs src="./../../utils/util.wxs" module="utils" />

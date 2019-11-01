@@ -2,8 +2,10 @@
 Component({
   properties: {
     curIndex: {
-      type: Number,
-      value: 1
+      type: Number
+    },
+    total: {
+      type: Number
     }
   },
 

@@ -1,2 +1,0 @@
-<!-- components/topNav/index.wxml -->
-<view class="container">{{curIndex}}/35</view>

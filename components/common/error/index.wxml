@@ -1,0 +1,2 @@
+<!-- components/error/index.wxml -->
+<view class="container">请求错误</view>

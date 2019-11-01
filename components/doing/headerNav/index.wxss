@@ -1,0 +1,11 @@
+/* components/topNav/index.wxss */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+#put-paper {
+  margin: 0 !important;
+}

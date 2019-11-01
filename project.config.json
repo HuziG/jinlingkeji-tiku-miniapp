@@ -6,10 +6,12 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": false,
 		"autoAudits": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
@@ -18,12 +20,11 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		},
-		"nodeModules": true
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
-	"appid": "wx36b6f49ccd8f3ce5",
+	"appid": "wx61b54be3d7a3cb37",
 	"projectname": "jinlingkeji-tiku-miniapp",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -49,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
@@ -59,16 +60,17 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "pages/doing/doing",
 					"pathName": "pages/doing/doing",
-					"query": "",
+					"query": "mode=0",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/conclusion/conclusion",
 					"pathName": "pages/conclusion/conclusion",
+					"query": "",
 					"scene": null
 				}
 			]
