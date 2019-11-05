@@ -6,6 +6,9 @@ Component({
     },
     total: {
       type: Number
+    },
+    title: {
+      type: String
     }
   },
 

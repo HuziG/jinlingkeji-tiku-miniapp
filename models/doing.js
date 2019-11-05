@@ -10,6 +10,16 @@ const disorderItem = items => {
  * @param {data} 试题
  */
 export const modeGetItem = (mode, data) => {
+  data = data.map(item => {
+    if (item.options) {
+      item.options = item.options.map(item => ({
+        value: item,
+        checked: false
+      }));
+    }
+    return item;
+  });
+
   if (mode === 1) {
     return disorderItem(data);
   }

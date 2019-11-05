@@ -1,2 +1,5 @@
-<!--components/doing/analysis/index.wxml-->
-<text>components/doing/analysis/index.wxml</text>
+<!-- components/doing/analysis/index.wxml -->
+<view class="container">
+  <view class="title">试题解析</view>
+  <view class="des">{{des}}</view>
+</view>

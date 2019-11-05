@@ -24,7 +24,25 @@ var sqText = function(index) {
   return string.charAt(index);
 };
 
+// title to cn name
+var titleName = function(value) {
+  var rname = null;
+  switch (value) {
+    case "choice":
+      rname = "选择题";
+      break;
+    case "input":
+      rname = "填空题";
+      break;
+    case "short":
+      rname = "简答题";
+      break;
+  }
+  return rname;
+};
+
 module.exports = {
   formatTime: formatTime,
-  sqText: sqText
+  sqText: sqText,
+  titleName: titleName
 };

@@ -2,6 +2,7 @@
   "usingComponents": {
     "bottom-nav-cmp": "/components/doing/bottomNav/index",
     "con-cmp": "/components/doing/content/index",
+    "analysis-cmp": "/components/doing/analysis/index",
     "header-nav-cmp": "/components/doing/headerNav/index"
   }
 }

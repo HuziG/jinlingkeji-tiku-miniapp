@@ -3,3 +3,22 @@
   display: block;
   margin: 10px 0;
 }
+
+.input-block {
+  padding: 10px 0;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed #eeeeee;
+  border-bottom: 1px dashed #eeeeee;
+  margin-top: 10px;
+}
+
+.input-block input {
+  flex: 12;
+  background-color: #eeeeee;
+  margin-right: 10px;
+  padding: 3px 10px;
+  border-radius: 5px;
+}

@@ -1,10 +1,13 @@
 <!-- pages/doing/doing.wxml -->
 <view class="header">
-  <header-nav-cmp curIndex="{{index}}" total="{{data.length}}" />
+  <header-nav-cmp curIndex="{{index}}" title="{{data[index].type}}" total="{{data.length}}" bind:checkHandle="checkHandle" />
 </view>
 <view class="container">
   <view>
-    <con-cmp data="{{data[index]}}" selectInfo="{{selectInfo[index]}}" bind:scoreHandle="scoreHandle" />
+    <con-cmp data="{{data[index]}}" bind:scoreHandle="scoreHandle" bind:selectHandle="selectHandle" bind:saveHandle="saveHandle" bind:inputHandle="inputHandle" />
+  </view>
+  <view>
+    <analysis-cmp wx:if="{{analySis.show}}" des="{{analySis.des}}" />
   </view>
 </view>
 <view class="footer">

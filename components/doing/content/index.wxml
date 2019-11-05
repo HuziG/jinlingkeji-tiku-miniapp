@@ -1,10 +1,19 @@
 <!-- components/doing/content/index.wxml -->
-<view class="type-choice">
-  <view class="con">{{data.content}}</view>
-  <radio-group class="radio-group" bindchange="radioChange">
-    <radio class="radio" wx:for-items="{{data.options}}" wx:key="*index" value="{{index}}" checked="{{item.checked}}">
-      <view>{{wxs.sqText(index)}}：{{item}}</view>
-    </radio>
-  </radio-group>
-</view>
+<block wx:if="{{data.type === 'choice'}}">
+  <view class="type-choice">
+    <view class="con">{{data.content}}</view>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <radio class="radio" wx:for-items="{{data.options}}" wx:key="*index" value="{{index}}" checked="{{item.checked}}">
+        <view>{{wxs.sqText(index)}}：{{item.value}}</view>
+      </radio>
+    </radio-group>
+  </view>
+</block>
+<block wx:if="{{data.type === 'input'}}">
+  <text class="">{{data.content}}</text>
+  <view class="input-block">
+    <input type="text" placeholder="在这里输入答案" value="{{data.input_value || inputValue}}" bind:input="answerInput" />
+    <button type="primary" size="mini" class="save" bind:tap="saveHandle">保存</button>
+  </view>
+</block>
 <wxs module="wxs" src="../../../utils/util.wxs"></wxs>

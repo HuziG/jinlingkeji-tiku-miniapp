@@ -9,7 +9,10 @@ Page({
     index: 0,
     data: null,
     scores: 0,
-    selectInfo: []
+    analySis: {
+      show: false,
+      des: null
+    }
   },
 
   onLoad: function(options) {
@@ -25,7 +28,7 @@ Page({
   nextHandle() {
     this.data.scoreLock = "REFRESH";
 
-    let { index, data, prevDisabled, nextDisabled } = this.data;
+    let { index, data, prevDisabled, nextDisabled, analySis } = this.data;
 
     index = ++index;
 
@@ -37,17 +40,20 @@ Page({
       prevDisabled = false;
     }
 
+    analySis.show = false;
+
     this.setData({
       index,
       prevDisabled,
-      nextDisabled
+      nextDisabled,
+      analySis
     });
   },
 
   prevHandle() {
     this.data.scoreLock = "REFRESH";
 
-    let { index, data, prevDisabled, nextDisabled } = this.data;
+    let { index, data, prevDisabled, nextDisabled, analySis } = this.data;
 
     index = --index;
 
@@ -59,15 +65,18 @@ Page({
       prevDisabled = true;
     }
 
+    analySis.show = false;
+
     this.setData({
       index,
       prevDisabled,
-      nextDisabled
+      nextDisabled,
+      analySis
     });
   },
 
   scoreHandle(e) {
-    let { scores, index, data, selectInfo } = this.data;
+    let { scores, index, data } = this.data;
 
     if (e.detail.type === "ADD") {
       if (!this.data.scoreLock || this.data.scoreLock === "REFRESH") {
@@ -78,19 +87,47 @@ Page({
     }
 
     if (e.detail.type === "REDUCE") {
-      if (this.data.scoreLock || this.data.scoreLock === "REFRESH") {
+      if (
+        (this.data.scoreLock || this.data.scoreLock === "REFRESH") &&
+        scores != 0
+      ) {
         scores -= data[index].scores;
       }
 
       this.data.scoreLock = false;
     }
 
-    selectInfo[index] = e.detail.index;
-
     this.data.scores = scores;
+  },
+
+  selectHandle(e) {
+    const { data, index } = this.data;
+    data[index].options = data[index].options.map((item, index) => {
+      return {
+        value: item.value,
+        checked: index == e.detail.index ? true : false
+      };
+    });
+    this.setData({
+      data
+    });
+  },
+
+  inputHandle(e) {
+    const { data, index } = this.data;
+    data[index].input_value = e.detail.value;
 
     this.setData({
-      selectInfo
+      data
+    });
+  },
+
+  checkHandle() {
+    const { analySis, data, index } = this.data;
+    analySis.show = true;
+    analySis.des = data[index].analysis;
+    this.setData({
+      analySis
     });
   }
 });

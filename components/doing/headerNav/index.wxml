@@ -1,5 +1,7 @@
 <!-- components/topNav/index.wxml -->
 <view class="container">
   <text>{{curIndex+1}}/{{total}}</text>
+  <text>{{utils.titleName(title)}}</text>
   <button type="primary" size="mini" id="put-paper">交卷</button>
 </view>
+<wxs module="utils" src="../../../utils/util.wxs"></wxs>
