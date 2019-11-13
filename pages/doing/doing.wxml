@@ -1,6 +1,6 @@
 <!-- pages/doing/doing.wxml -->
 <view class="header">
-  <header-nav-cmp curIndex="{{index}}" title="{{data[index].type}}" total="{{data.length}}" bind:checkHandle="checkHandle" />
+  <header-nav-cmp curIndex="{{index}}" title="{{data[index].type}}" total="{{data.length}}" bind:checkHandle="checkHandle" bind:submitHandle="submitHandle" />
 </view>
 <view class="container">
   <view>
@@ -11,5 +11,5 @@
   </view>
 </view>
 <view class="footer">
-  <bottom-nav-cmp curIndex="{{1}}" prevDisabled="{{prevDisabled}}" analyDisabled="{{analyDisabled}}" nextDisabled="{{nextDisabled}}" bind:nextHandle="nextHandle" bind:checkHandle="checkHandle" bind:prevHandle="prevHandle" />
+  <bottom-nav-cmp prevDisabled="{{prevDisabled}}" analyDisabled="{{analyDisabled}}" nextDisabled="{{nextDisabled}}" bind:nextHandle="nextHandle" bind:checkHandle="checkHandle" bind:prevHandle="prevHandle" />
 </view>

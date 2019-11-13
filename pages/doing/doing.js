@@ -129,5 +129,41 @@ Page({
     this.setData({
       analySis
     });
+  },
+
+  submitHandle() {
+    const { data } = this.data;
+    let qArr = [];
+    data.forEach(element => {
+      if (element.type === "choice") {
+        let myanswer = element.options.find(item => item.checked === true)
+            .value,
+          rightanswer = element.options[element.answers].value;
+
+        qArr.push({
+          context: element.content,
+          myanswer: myanswer,
+          rightanswer,
+          result: myanswer == rightanswer,
+          scores: element.scores
+        });
+      }
+      if (element.type === "input") {
+        qArr.push({
+          context: element.content,
+          myanswer: element.input_value || "暂无作答",
+          result: element.answer === element.input_value,
+          scores: element.scores
+        });
+      }
+      if (element.type === "short") {
+        qArr.push({
+          context: element.content,
+          myanswer: element.input_value || "暂无作答",
+          rightanswer: element.answer,
+          scores: element.scores
+        });
+      }
+    });
   }
 });

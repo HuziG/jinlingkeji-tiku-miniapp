@@ -14,5 +14,9 @@ Component({
 
   data: {},
 
-  methods: {}
+  methods: {
+    submitHandle() {
+      this.triggerEvent("submitHandle");
+    }
+  }
 });

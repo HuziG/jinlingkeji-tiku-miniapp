@@ -6,7 +6,18 @@ Component({
     }
   },
 
+  observers: {
+    data: function(value) {
+      if (value)
+        if (value.type === "choice" || value.type === "short")
+          this.setData({
+            inputValue: value.input_value || ""
+          });
+    }
+  },
+
   data: {
+    saveText: "保存",
     inputValue: null
   },
 
@@ -32,9 +43,13 @@ Component({
       });
     },
 
-    saveHandle() {
+    saveHandle(e) {
       const _inputValue = this.data.inputValue;
-      if (_inputValue.trim() == this.data.data.answer) {
+      if (
+        _inputValue &&
+        _inputValue.trim() == this.data.data.answer &&
+        e.currentTarget.dataset.type === "input"
+      ) {
         this.triggerEvent("scoreHandle", {
           type: "ADD"
         });

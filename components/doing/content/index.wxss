@@ -22,3 +22,18 @@
   padding: 3px 10px;
   border-radius: 5px;
 }
+
+.textarea-block {
+  position: relative;
+  padding: 10px 0;
+  box-sizing: border-box;
+  border-top: 1px dashed #eeeeee;
+  border-bottom: 1px dashed #eeeeee;
+  margin-top: 10px;
+}
+
+.textarea-block textarea {
+  background-color: #eeeeee;
+  padding: 3px 10px;
+  border-radius: 5px;
+}
