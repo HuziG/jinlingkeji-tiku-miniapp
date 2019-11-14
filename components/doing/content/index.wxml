@@ -1,4 +1,5 @@
 <!-- components/doing/content/index.wxml -->
+<!-- view -->
 <block wx:if="{{data.type === 'choice'}}">
   <view class="type-choice">
     <view class="con">{{data.content}}</view>
@@ -27,4 +28,5 @@
     </button>
   </view>
 </block>
+<!-- wxs -->
 <wxs module="wxs" src="../../../utils/util.wxs"></wxs>

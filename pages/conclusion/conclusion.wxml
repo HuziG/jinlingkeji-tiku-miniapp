@@ -3,22 +3,36 @@
   <view class="main-block">
     <view class="item">
       <text class="left small-title">总分</text>
-      <text class="right row-des">100</text>
+      <text class="right row-des">{{totalScores}}</text>
     </view>
     <view class="item">
       <view class="top big-title">本次得分</view>
-      <view class="bottom column-des">80</view>
+      <view class="bottom column-des">{{getScores}}</view>
     </view>
     <view class="item">
       <view class="top big-title">正确率</view>
-      <view class="bottom column-des">80%</view>
+      <view class="bottom column-des">{{scoresPer}}%</view>
     </view>
-  </view>
-</view>
-<view class="footer-wrapper">
-  <view class="footer-button">
-    <button class="btn" type="primary" size="mini" disabled="{{disabled}}" bindtap="backToHomeHandle">
-      返回首页
-    </button>
+    <view class="item" style="border-bottom: none;">
+      <view class="top big-title">评判详情</view>
+      <view class="cols">
+        <view style="flex: 3;">题目</view>
+        <view style="flex: 3;">你的答案</view>
+        <view style="flex: 3;">正确答案</view>
+        <view style="flex: 3;">结果</view>
+      </view>
+      <block wx:for="{{submitData}}" wx:key="*this">
+        <view class="rows">
+          <view style="flex: 3;">{{item.context}}</view>
+          <view style="flex: 3;">{{item.myanswer || '未作答'}}</view>
+          <view style="flex: 3;color:  {{item.myanswer ? '#000' : '#ED8F02'}};">
+            {{item.rightanswer || '主观发挥题'}}
+          </view>
+          <view style="flex: 3;color: {{item.result ? '#7AB900' : '#FF2525'}};font-weight: 700;">
+            {{item.result ? '+ ' + item.scores :  '- ' + item.scores}}
+          </view>
+        </view>
+      </block>
+    </view>
   </view>
 </view>

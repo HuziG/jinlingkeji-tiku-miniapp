@@ -151,6 +151,7 @@ Page({
       if (element.type === "input") {
         qArr.push({
           context: element.content,
+          rightanswer: element.answer,
           myanswer: element.input_value || "暂无作答",
           result: element.answer === element.input_value,
           scores: element.scores
@@ -164,6 +165,10 @@ Page({
           scores: element.scores
         });
       }
+    });
+    wx.setStorageSync("submit_data", qArr);
+    wx.navigateTo({
+      url: "/pages/conclusion/conclusion"
     });
   }
 });
