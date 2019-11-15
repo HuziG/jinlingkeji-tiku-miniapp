@@ -5,7 +5,10 @@ import * as HomeModels from "../../models/home";
 Page({
   data: {
     picker: {
-      value: [{ id: 0, name: "顺序刷题" }, { id: 1, name: "随机刷题" }],
+      value: [
+        { id: 0, name: "顺序刷题" },
+        { id: 1, name: "随机刷题" }
+      ],
       index: 0
     },
     list: {
@@ -39,11 +42,14 @@ Page({
   },
 
   detailHandle(e) {
-    let con = this.data.list.con[getTagAttr(e, "index")].data;
-    wx.setStorageSync("doing_data", JSON.stringify(con));
+    let data = this.data.list.con[getTagAttr(e, "index")];
+    this.data.checkDataId = data.id;
+    wx.setStorageSync("doing_data", JSON.stringify(data.data));
   },
 
   pickerChangeHandle(e) {
+    HomeModels.addTimesHandle(this.data.checkDataId);
+
     wx.navigateTo({
       url: `/pages/doing/doing?mode=${e.detail.value}`
     });
