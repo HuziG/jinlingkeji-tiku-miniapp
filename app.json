@@ -17,14 +17,14 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "iconPath": "",
-        "selectedIconPath": "",
+        "iconPath": "/assets/imgs/paper@unselect.png",
+        "selectedIconPath": "/assets/imgs/paper@select.png",
         "text": "试卷中心"
       },
       {
         "pagePath": "pages/answers/answers",
-        "iconPath": "",
-        "selectedIconPath": "",
+        "iconPath": "/assets/imgs/answers@unselect.png",
+        "selectedIconPath": "/assets/imgs/answers@select.png",
         "text": "答案反馈"
       }
     ]
