@@ -1,8 +1,23 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: dingjia z
+ * @Date: 2020-01-13 11:05:33
+ * @LastEditors: dingjia z
+ * @LastEditTime: 2020-03-28 14:33:31
+ */
 // pages/conclusion/conclusion.js
+import { sendShortAnswer } from "../../services/conclusion";
+
 Page({
   data: {},
 
-  onShow: function(options) {
+  onShow: function() {
+    this.initHandle();
+    this.sendShortAnswersHandle();
+  },
+
+  initHandle() {
     let doingData = wx.getStorageSync("doing_data");
     let submitData = wx.getStorageSync("submit_data");
 
@@ -24,6 +39,10 @@ Page({
       getScores,
       scoresPer
     });
+  },
+
+  sendShortAnswersHandle() {
+    sendShortAnswer();
   },
 
   onUnload: function() {

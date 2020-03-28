@@ -1,3 +1,11 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: dingjia z
+ * @Date: 2020-01-13 11:05:33
+ * @LastEditors: dingjia z
+ * @LastEditTime: 2020-03-28 14:34:54
+ */
 // pages/home/home.js
 import { getTagAttr } from "../../utils/util.js";
 import * as HomeModels from "../../models/home";
@@ -19,11 +27,20 @@ Page({
 
   onShow() {
     this.requestHandle();
+
+    wx.removeStorage({
+      key: "short_answers"
+    });
+    wx.removeStorage({
+      key: "doing_data"
+    });
   },
 
   async requestHandle() {
     const { list } = this.data;
     const { statusCode, data } = await HomeModels.getListHandle();
+
+    console.log(statusCode);
 
     if (statusCode !== 200) {
       list.loading = "ERR";
