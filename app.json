@@ -3,12 +3,31 @@
     "pages/index/index",
     "pages/home/home",
     "pages/doing/doing",
-    "pages/conclusion/conclusion"
+    "pages/conclusion/conclusion",
+    "pages/answers/answers"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#2c2c2c",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "试卷中心"
+      },
+      {
+        "pagePath": "pages/answers/answers",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "答案反馈"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json",
   "plugins": {

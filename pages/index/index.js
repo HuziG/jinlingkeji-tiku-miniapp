@@ -4,7 +4,7 @@
  * @Author: dingjia z
  * @Date: 2020-01-13 11:05:33
  * @LastEditors: dingjia z
- * @LastEditTime: 2020-03-28 14:25:32
+ * @LastEditTime: 2020-03-28 14:55:15
  */
 //index.js
 import { userLogin } from "../../services/user";
@@ -33,7 +33,7 @@ Page({
     if (result) {
       wx.showToast({
         title: "登陆失败",
-        icon: "success",
+        icon: "none",
         duration: 2000
       });
       wx.hideLoading();
@@ -50,8 +50,8 @@ Page({
     });
   },
   directToHandle() {
-    wx.redirectTo({
-      url: "../home/home"
+    wx.switchTab({
+      url: "/pages/home/home"
     });
   }
 });
