@@ -1,2 +1,19 @@
-<!--pages/answers/answers.wxml-->
-<text>pages/answers/answers.wxml</text>
+<!-- pages/answers/answers.wxml -->
+<view class="container">
+    <block wx:for="{{listData}}" key="*this">
+        <view class="item">
+            <view class="content">
+                <view class="title">问题内容</view>
+                <view class="con">{{item.question_content}}</view>
+            </view>
+            <view class="answer">
+                <view class="title">回答内容</view>
+                <view class="con">{{item.question_answer}}</view>
+            </view>
+            <view class="comment">
+                <view class="title">评审内容</view>
+                <view class="con">{{item.question_comment}}</view>
+            </view>
+        </view>
+    </block>
+</view>

@@ -1,1 +1,24 @@
 /* pages/answers/answers.wxss */
+.container {
+  margin-top: -40rpx;
+}
+.item {
+  width: 85vw;
+  margin: 0 auto;
+  padding: 20rpx;
+  margin-top: 40rpx;
+  border-radius: 10rpx;
+  border: 2px solid #cccccc;
+  font-size: 24rpx;
+}
+
+.item .con {
+  padding: 15rpx 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.item .title {
+  font-size: 28rpx;
+  padding-top: 15rpx;
+  color: #666666;
+}
