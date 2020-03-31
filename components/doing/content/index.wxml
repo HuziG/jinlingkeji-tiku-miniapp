@@ -11,18 +11,20 @@
   </view>
 </block>
 <block wx:if="{{data.type === 'input'}}">
-  <text>{{data.content}}</text>
-  <view class="input-block">
-    <input type="text" placeholder="在这里输入答案" value="{{data.input_value || inputValue}}" bind:input="answerInput" />
-    <button type="primary" size="mini" class="save" data-typedata="input" bind:tap="saveHandle">
-      {{saveText}}
-    </button>
-  </view>
+  <view>{{data.content}}</view>
+  <block wx:for="{{data.answer}}">
+    <view class="input-block">
+      <input data-index="{{index}}" value="{{inputValue[index]}}" type="text" placeholder="{{'在这里输入第'+(index+1)+'答案'}}" bindinput="answersInput" />
+      <button type="primary" size="mini" class="save" data-index="{{index}}" data-type="input" bind:tap="saveHandle">
+        {{saveText}}
+      </button>
+    </view>
+  </block>
 </block>
 <block wx:if="{{data.type === 'short'}}">
   <text>{{data.content}}</text>
   <view class="textarea-block">
-    <textarea type="text" placeholder="在这里输入答案" value="{{data.input_value || inputValue}}" bind:input="answerInput" />
+    <textarea type="text" placeholder="在这里输入答案" value="{{data.input_value || shortValue}}" bind:input="answerInput" />
     <button type="primary" size="mini" style="margin-top: 13px;" data-type="short" bind:tap="saveHandle" class="save">
       保存
     </button>

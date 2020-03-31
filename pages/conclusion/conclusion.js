@@ -4,7 +4,7 @@
  * @Author: dingjia z
  * @Date: 2020-01-13 11:05:33
  * @LastEditors: dingjia z
- * @LastEditTime: 2020-03-28 14:33:31
+ * @LastEditTime: 2020-03-31 16:01:26
  */
 // pages/conclusion/conclusion.js
 import { sendShortAnswer } from "../../services/conclusion";
@@ -43,6 +43,12 @@ Page({
 
   sendShortAnswersHandle() {
     sendShortAnswer();
+  },
+
+  questionTo(e) {
+    wx.navigateTo({
+      url: `/pages/question/question?index=${e.currentTarget.dataset.index}`
+    });
   },
 
   onUnload: function() {

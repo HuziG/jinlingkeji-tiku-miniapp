@@ -115,7 +115,8 @@ Page({
 
   inputHandle(e) {
     const { data, index } = this.data;
-    data[index].input_value = e.detail.value;
+    const { value } = e.detail;
+    data[index]["input_value"] = JSON.stringify(value) === "[]" ? null : value;
 
     this.setData({
       data
@@ -132,8 +133,9 @@ Page({
   },
 
   submitHandle() {
-    const { data } = this.data;
     let qArr = [];
+    const { data } = this.data;
+    console.log(data);
     data.forEach(element => {
       if (element.type === "choice") {
         let myanswer = element.options.find(item => item.checked === true)
@@ -141,6 +143,7 @@ Page({
           rightanswer = element.options[element.answers].value;
 
         qArr.push({
+          type: "choice",
           context: element.content,
           myanswer: myanswer,
           rightanswer,
@@ -150,15 +153,35 @@ Page({
       }
       if (element.type === "input") {
         qArr.push({
+          type: "input",
           context: element.content,
           rightanswer: element.answer,
           myanswer: element.input_value || "暂无作答",
-          result: element.answer === element.input_value,
+          result:
+            JSON.stringify(element.input_value) === "[]"
+              ? false
+              : true && getResult(),
           scores: element.scores
         });
+
+        function getResult() {
+          let result = true;
+
+          try {
+            element.input_value.forEach((ele, index) => {
+              if (element.answer[index].indexOf(ele) === -1) {
+                result = false;
+                return false;
+              }
+            });
+          } catch (error) {}
+
+          return result;
+        }
       }
       if (element.type === "short") {
         qArr.push({
+          type: "short",
           context: element.content,
           myanswer: element.input_value || "暂无作答",
           rightanswer: element.answer,
@@ -167,7 +190,7 @@ Page({
       }
     });
     wx.setStorageSync("submit_data", qArr);
-    wx.navigateTo({
+    wx.redirectTo({
       url: "/pages/conclusion/conclusion"
     });
   }

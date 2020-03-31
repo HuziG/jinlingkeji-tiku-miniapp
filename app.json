@@ -4,7 +4,8 @@
     "pages/home/home",
     "pages/doing/doing",
     "pages/conclusion/conclusion",
-    "pages/answers/answers"
+    "pages/answers/answers",
+    "pages/question/question"
   ],
   "window": {
     "backgroundTextStyle": "light",

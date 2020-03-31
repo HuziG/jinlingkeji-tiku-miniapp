@@ -4,9 +4,11 @@
  * @Author: dingjia z
  * @Date: 2020-01-13 11:05:33
  * @LastEditors: dingjia z
- * @LastEditTime: 2020-03-28 14:41:22
+ * @LastEditTime: 2020-03-31 14:26:51
  */
 // components/doing/content/index.js
+const query = wx.createSelectorQuery();
+
 Component({
   properties: {
     data: {
@@ -16,17 +18,24 @@ Component({
 
   observers: {
     data: function(value) {
-      if (value)
+      if (value) {
         if (value.type === "choice" || value.type === "short")
           this.setData({
-            inputValue: value.input_value || ""
+            shortValue: ""
           });
+        if (value.type === "input") {
+          this.setData({
+            inputValue: []
+          });
+        }
+      }
     }
   },
 
   data: {
     saveText: "保存",
-    inputValue: null
+    shortValue: "",
+    inputValue: []
   },
 
   methods: {
@@ -45,10 +54,16 @@ Component({
       });
     },
 
-    answerInput(e) {
-      this.setData({
-        inputValue: e.detail.value
-      });
+    answersInput(e) {
+      const index = e.currentTarget.dataset.index;
+
+      if (index !== undefined) {
+        this.data.inputValue[index] = e.detail.value;
+      } else {
+        this.setData({
+          inputValue: e.detail.value
+        });
+      }
     },
 
     saveHandle(e) {
@@ -63,30 +78,37 @@ Component({
         getStorage = getStorage ? getStorage : [];
         getStorage.push({
           content: this.data.data.content,
-          answer: this.data.inputValue
+          answer: this.data.shortValue
         });
         wx.setStorageSync("short_answers", getStorage);
 
         return false;
       }
 
-      const _inputValue = this.data.inputValue;
-      if (
-        _inputValue &&
-        _inputValue.trim() == this.data.data.answer &&
-        e.currentTarget.dataset.type === "input"
-      ) {
-        this.triggerEvent("scoreHandle", {
-          type: "ADD"
+      if (e.currentTarget.dataset.type === "input") {
+        const index = e.currentTarget.dataset.index;
+        const answer = this.data.data.answer[index];
+
+        if (answer.indexOf(this.data.inputValue[index].trim()) !== -1) {
+          this.triggerEvent("scoreHandle", {
+            type: "ADD"
+          });
+        } else {
+          this.triggerEvent("scoreHandle", {
+            type: "REDUCE"
+          });
+        }
+
+        const inputValue = JSON.parse(JSON.stringify(this.data.inputValue));
+
+        this.triggerEvent("inputHandle", {
+          value: inputValue
         });
-      } else {
-        this.triggerEvent("scoreHandle", {
-          type: "REDUCE"
+
+        this.setData({
+          inputValue
         });
       }
-      this.triggerEvent("inputHandle", {
-        value: _inputValue
-      });
     }
   }
 });

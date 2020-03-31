@@ -62,3 +62,26 @@
 .cols view:nth-child(-n + 1) {
   border-left: 1px solid #666;
 }
+
+.conclusion-block {
+  text-align: left;
+  margin-top: -30rpx;
+}
+
+.item-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24rpx;
+  background-color: #eeeeee;
+  padding: 10rpx 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.conclusion-item {
+  font-size: 26rpx;
+  padding: 10rpx 20rpx;
+  border: 1px solid #eeeeee;
+  margin-top: 40rpx;
+}

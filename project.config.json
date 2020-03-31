@@ -51,6 +51,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 1,
 			"list": [
@@ -73,6 +77,12 @@
 					"name": "pages/conclusion/conclusion",
 					"pathName": "pages/conclusion/conclusion",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/question/question",
+					"pathName": "pages/question/question",
 					"scene": null
 				}
 			]

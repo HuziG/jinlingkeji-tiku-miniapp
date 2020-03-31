@@ -1,0 +1,39 @@
+<!-- pages/question/question.wxml -->
+<view class="container">
+    <block wx:if="{{data.type === 'choice' || data.type === 'short' }}">
+        <view class="block">
+            <view class="title">试题内容</view>
+            <view class="content">{{data.context}}</view>
+        </view>
+        <view class="block">
+            <view class="title">试题答案</view>
+            <view class="content">{{data.rightanswer}}</view>
+        </view>
+        <view class="block">
+            <view class="title">你的回答</view>
+            <view class="content">{{data.myanswer}}</view>
+        </view>
+    </block>
+    <block wx:if="{{data.type === 'input'}}">
+        <view class="block">
+            <view class="title">试题内容</view>
+            <view class="content">{{data.context}}</view>
+        </view>
+        <view class="block">
+            <view class="title">试题答案</view>
+            <view>
+                <block wx:for="{{data.rightanswer}}">
+                    <view class="content">{{"第"+(index+1)+"问："+data.rightanswer[index]+""}}</view>
+                </block>
+            </view>
+        </view>
+        <view class="block">
+            <view class="title">你的回答</view>
+            <view>
+                <block wx:for="{{data.myanswer}}">
+                    <view class="content">{{"第"+(index+1)+"问："+data.myanswer[index]+""}}</view>
+                </block>
+            </view>
+        </view>
+    </block>
+</view>
