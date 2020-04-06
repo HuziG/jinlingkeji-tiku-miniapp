@@ -1,7 +1,9 @@
 {
-  "navigationBarTitleText": "试卷中心",
   "usingComponents": {
     "error-cmp": "/components/common/error/index",
     "loading-cmp": "/components/common/loading/index"
-  }
+  },
+  "navigationBarTitleText": "试卷中心",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

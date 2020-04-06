@@ -4,7 +4,7 @@
  * @Author: dingjia z
  * @Date: 2020-01-13 11:05:33
  * @LastEditors: dingjia z
- * @LastEditTime: 2020-03-28 14:34:54
+ * @LastEditTime: 2020-04-02 09:37:29
  */
 // pages/home/home.js
 import { getTagAttr } from "../../utils/util.js";
@@ -55,6 +55,12 @@ Page({
       this.setData({
         list
       });
+      wx.stopPullDownRefresh();
+      wx.showToast({
+        title: "获取数据成功",
+        icon: "none",
+        duration: 1000
+      });
     }
   },
 
@@ -70,5 +76,9 @@ Page({
     wx.navigateTo({
       url: `/pages/doing/doing?mode=${e.detail.value}`
     });
+  },
+
+  onPullDownRefresh() {
+    this.requestHandle();
   }
 });

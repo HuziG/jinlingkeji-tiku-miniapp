@@ -4,28 +4,30 @@
  * @Author: dingjia z
  * @Date: 2020-01-13 11:05:33
  * @LastEditors: dingjia z
- * @LastEditTime: 2020-03-31 16:01:26
+ * @LastEditTime: 2020-04-06 19:17:25
  */
 // pages/conclusion/conclusion.js
-import { sendShortAnswer } from "../../services/conclusion";
+import { sendShortAnswer, reqQuestionState } from "../../services/conclusion";
 
 Page({
-  data: {},
+  data: {
+    submitData: wx.getStorageSync("submit_data"),
+  },
 
-  onShow: function() {
+  onShow: function () {
     this.initHandle();
     this.sendShortAnswersHandle();
+    this.sendQuestionState();
   },
 
   initHandle() {
     let doingData = wx.getStorageSync("doing_data");
-    let submitData = wx.getStorageSync("submit_data");
 
     let totalScores = JSON.parse(doingData).reduce((value, item) => {
       return (value += item.scores);
     }, 0);
 
-    let getScores = submitData.reduce((value, item) => {
+    let getScores = this.data.submitData.reduce((value, item) => {
       if (item.result) value += item.scores;
       return value;
     }, 0);
@@ -34,26 +36,42 @@ Page({
 
     this.setData({
       doingData,
-      submitData,
       totalScores,
       getScores,
-      scoresPer
+      scoresPer,
     });
   },
 
   sendShortAnswersHandle() {
-    sendShortAnswer();
+    if (wx.getStorageSync("short_answers")) {
+      sendShortAnswer();
+    }
+  },
+
+  async sendQuestionState() {
+    let promiseArr = [];
+    this.data.submitData.forEach((element) => {
+      if (!element.result) {
+        promiseArr.push(reqQuestionState(element));
+      }
+    });
+
+    console.log(promiseArr);
+
+    const result = await Promise.all(promiseArr).catch(() => {});
+
+    console.log(result);
   },
 
   questionTo(e) {
     wx.navigateTo({
-      url: `/pages/question/question?index=${e.currentTarget.dataset.index}`
+      url: `/pages/question/question?index=${e.currentTarget.dataset.index}`,
     });
   },
 
-  onUnload: function() {
+  onUnload: function () {
     wx.reLaunch({
-      url: "/pages/home/home"
+      url: "/pages/home/home",
     });
-  }
+  },
 });
