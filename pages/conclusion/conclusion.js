@@ -22,18 +22,14 @@ Page({
 
   initHandle() {
     let doingData = wx.getStorageSync("doing_data");
-
     let totalScores = JSON.parse(doingData).reduce((value, item) => {
       return (value += item.scores);
     }, 0);
-
     let getScores = this.data.submitData.reduce((value, item) => {
       if (item.result) value += item.scores;
       return value;
     }, 0);
-
     let scoresPer = (getScores / totalScores) * 100;
-
     this.setData({
       doingData,
       totalScores,
